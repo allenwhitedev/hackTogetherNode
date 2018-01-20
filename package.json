@@ -1,0 +1,24 @@
+{
+  "name": "hack_together_node",
+  "version": "1.0.0",
+  "description": "Platform for Major League Hacking hackathons",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allenwhitedev/hackTogetherNode.git"
+  },
+  "keywords": [
+    "hackathon",
+    "swamphacks"
+  ],
+  "author": "allenwhitedev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/allenwhitedev/hackTogetherNode/issues"
+  },
+  "homepage": "https://github.com/allenwhitedev/hackTogetherNode#readme"
+}
