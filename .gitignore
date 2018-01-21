@@ -62,3 +62,6 @@ typings/
 
 # For Mac 
 .DS_Store
+
+# Configuration file contains sensitive data such as mLab login info
+config.js
