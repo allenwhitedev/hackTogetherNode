@@ -30,18 +30,45 @@ MongoClient.connect(mongoUrl, (err, database) =>
 
 })
 
-app.listen(port, () => { console.log('Hack Together Node app running on port ' + port) } )
+const MongoClient = require('mongodb').MongoClient
+
+MongoClient.connect(mongoUrl, (err, database) =>
+{
+	if (err) return console.log(err)
+
+	console.log('Successfully connected to mongo')
+	gDb = database.db('hacktogether')
+
+	gDb.collection('tests').find().toArray( (err, result) =>
+  {
+    if (err)
+      return console.log(err)
+    else
+      console.log( 'result', result )   
+  })  
+
+})
+
+app.listen(port, () => { console.log('Hack Together Node app running on port ' + port) } )	
 
 // -- routes
 app.get('/testDb', (req, res) =>
 {
 	gDb.collection('tests').find().toArray( (err, result) =>
 	{
+<<<<<<< HEAD
 		if ( err )
 			return console.log(err)
 		else
 			res.json(result)
 	})
+=======
+		if ( err ) 
+			return console.log(err)
+		else
+			res.json(result)
+	}) 
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
 })
 app.post('/testDb', (req, res) =>
 {
@@ -62,12 +89,16 @@ app.post('/testDb', (req, res) =>
 	else
 		res.status(400).send({message: 'Error: You must send a valid json body with a message value'})
 })
+<<<<<<< HEAD
 
+=======
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
 app.get('/test', (req, res) =>
 {
 	console.log('Someone used GET on the /test route')
 	res.send( { message: 'This is the json success message from the GET /test route' } )
 })
+<<<<<<< HEAD
 
 // app.post('/test', (req, res) =>
 // {
@@ -115,6 +146,8 @@ app.get('/employers/getHackathonParticipantJobInterest', (req, res) => {
   })
 })
 
+=======
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
 app.post('/test', (req, res) =>
 {
 	console.log('Someone used POST on the /test route, here is the req.body.myKey ' + req.body.myKey )
@@ -129,7 +162,11 @@ app.post('/signup', (req, res) =>
 		case 'hacker':
 			if ( req.body.email && req.body.firstName && req.body.lastName && req.body.school && req.body.employmentSeeking && req.body.resume && req.body.geolocation )
 			{
+<<<<<<< HEAD
 				gDb.collection('hackers').insert({email: req.body.email, firstName: req.body.firstName, lastName: req.body.lastName, school: req.body.school, employmentSeeking: req.body.employmentSeeking,
+=======
+				gDb.collection('hackers').insert({email: req.body.email, firstName: req.body.firstName, lastName: req.body.lastName, school: req.body.school, employmentSeeking: req.body.employmentSeeking, 
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
 					resume: req.body.resume, jobPosition: req.body.jobPosition, geolocation: {longitude: req.body.geolocation.longitude, latitude: req.body.geolocation.latitude} }, (err, result) =>
 				{
 					if (err)
@@ -139,20 +176,38 @@ app.post('/signup', (req, res) =>
 					}
 					else
 						return res.json(result)
+<<<<<<< HEAD
 				})
 			}
 			else
 				res.status(400).send({message: 'Error: Signup requires an user type, email, resume, firstName, lastName, school, geolocation, and employmentSeeking'})
 			break
 		case 'employer':
+=======
+				})	
+			}
+			else
+				res.status(400).send({message: 'Error: Signup requires an user type, email, resume, firstName, lastName, school, geolocation, and employmentSeeking'})	
+			break
+		case 'employer': 
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
 			res.status(501).send({ message: 'Employer signup not yet implemented' })
 			break
 		case 'organizer':
 			res.status(501).send({ message: 'Organizer signup not yet implemented' })
 			break
+<<<<<<< HEAD
 
 		default:
 			res.status(400).send('Error: Could not understand format of signup request (Are you sure you included a type?)')
 			break
 	}
 })
+=======
+	
+		default:
+			res.status(400).send('Error: Could not understand format of signup request (Are you sure you included a type?)')			
+			break
+	}
+})
+>>>>>>> c9651e31fe2369413c0085db44b06fc25eb0b5f9
