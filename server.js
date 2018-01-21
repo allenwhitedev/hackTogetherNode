@@ -81,7 +81,7 @@ app.post('/signup', (req, res) =>
 			if ( req.body.email && req.body.firstName && req.body.lastName && req.body.school && req.body.employmentSeeking && req.body.resume && req.body.geolocation )
 			{
 				gDb.collection('hackers').insert({email: req.body.email, firstName: req.body.firstName, lastName: req.body.lastName, school: req.body.school, employmentSeeking: req.body.employmentSeeking, 
-					resume: req.body.resume, jobPosition: req.body.jobPosition, geolocation: {longitude: req.body.longitude, latitude: req.body.latitude} }, (err, result) =>
+					resume: req.body.resume, jobPosition: req.body.jobPosition, geolocation: {longitude: req.body.geolocation.longitude, latitude: req.body.geolocation.latitude} }, (err, result) =>
 				{
 					if (err)
 					{
